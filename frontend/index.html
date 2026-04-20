@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Basic</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app" class="app bg-sunny">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          <span class="brand-name">Weather Basic</span>
+        </div>
+
+        <div class="unit-toggle" role="group" aria-label="Temperature units">
+          <button id="unit-c" class="unit active" data-units="metric">°C</button>
+          <button id="unit-f" class="unit" data-units="imperial">°F</button>
+        </div>
+      </header>
+
+      <section class="search-row">
+        <input
+          id="city-input"
+          type="text"
+          placeholder="Search a city…"
+          autocomplete="off"
+        />
+        <button id="search-btn" class="btn primary">Search</button>
+        <button id="geo-btn" class="btn ghost" title="Use my location">
+          📍 My location
+        </button>
+      </section>
+
+      <p id="status" class="status" aria-live="polite"></p>
+
+      <main class="layout">
+        <!-- Hero / current weather card -->
+        <article class="hero" id="hero">
+          <div class="hero-top">
+            <div>
+              <h1 id="city-name" class="city-name">—</h1>
+              <p id="date-line" class="date-line">—</p>
+              <p id="time-line" class="time-line">—</p>
+            </div>
+            <img id="hero-icon" class="hero-icon" alt="" />
+          </div>
+
+          <div class="hero-temp">
+            <span id="temp-value">—</span><span id="temp-unit" class="temp-unit">°</span>
+          </div>
+          <p id="condition" class="condition">—</p>
+
+          <div class="chips">
+            <span class="chip">💧 Humidity <b id="humidity">—</b></span>
+            <span class="chip">🌬️ Wind <b id="wind">—</b></span>
+          </div>
+        </article>
+
+        <!-- Forecast card -->
+        <article class="forecast">
+          <div class="tabs">
+            <button class="tab active" data-tab="today">Today</button>
+            <button class="tab" data-tab="tomorrow">Tomorrow</button>
+          </div>
+
+          <div id="hourly" class="hourly"></div>
+
+          <div class="rain-block">
+            <div class="rain-head">
+              <span>Chance of rain</span>
+              <span class="rain-legend">
+                <i class="dot light"></i> Light
+                <i class="dot med"></i> Med
+                <i class="dot heavy"></i> Heavy
+              </span>
+            </div>
+            <svg id="rain-chart" viewBox="0 0 320 80" preserveAspectRatio="none"></svg>
+          </div>
+
+          <div id="tomorrow-card" class="tomorrow hidden">
+            <img id="tomorrow-icon" alt="" />
+            <div>
+              <p class="tom-title">Tomorrow</p>
+              <p id="tomorrow-cond" class="tom-cond">—</p>
+            </div>
+            <div class="tom-temps">
+              <span id="tomorrow-max">—°</span>
+              <span id="tomorrow-min" class="muted">—°</span>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer class="foot">Powered by OpenWeatherMap</footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
