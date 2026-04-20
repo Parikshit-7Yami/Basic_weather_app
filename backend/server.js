@@ -8,11 +8,10 @@
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
+require('dotenv').config();
 
 // Load .env from the project root (one level above /backend), and also try /backend/.env as fallback.
-dotenv.config({ path: path.join(__dirname, "..", ".env") });
-dotenv.config({ path: path.join(__dirname, ".env") });
+require('dotenv').config();
 
 const weatherRouter = require("./routes/weather");
 
@@ -47,10 +46,13 @@ app.use((err, _req, res, _next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Weather Basic server running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
   if (!process.env.OPENWEATHER_API_KEY) {
     console.warn(
       "⚠️  OPENWEATHER_API_KEY is not set. Create a .env file (see .env.example)."
     );
   }
+});
+app.get("/health", (req, res) => {
+  res.send("OK");
 });
