@@ -8,7 +8,6 @@
   const path = require("path");
   const express = require("express");
   const cors = require("cors");
-  require('dotenv').config();
 
   // Load .env from the project root (one level above /backend), and also try /backend/.env as fallback.
   require('dotenv').config();
