@@ -107,7 +107,7 @@
     }
     params.set("units", units);
 
-    const res = await fetch(`/api/weather?${params.toString()}`);
+    const res = await fetch(`https://basic-weather-app-j8ix.onrender.com/api/weather?${params.toString()}`);
     let body = null;
     try { body = await res.json(); } catch (_) { /* non-JSON */ }
     if (!res.ok) {
